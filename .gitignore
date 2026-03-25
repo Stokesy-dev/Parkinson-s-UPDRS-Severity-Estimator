@@ -1,0 +1,31 @@
+venv/
+__pycache__/
+*.pyc
+*.pyo
+.DS_Store
+*.egg-info/
+dist/
+build/
+.env
+
+# Data (too large for GitHub — use DVC or manual download)
+data/*.csv
+data/*.data
+data/*.arff
+
+# Model checkpoints (large binary files)
+models/*.pt
+models/*.pkl
+
+# Results (regenerate from code)
+results/figures/
+results/metrics/
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+notebooks/.ipynb_checkpoints/
+
+# IDE
+.vscode/
+.idea/
+*.swp
