@@ -175,7 +175,7 @@ Draft available in `docs/paper_draft.md` (in progress).
 ## 🗓️ Roadmap
 
 - [x] Repository setup + structure
-- [ ] EDA notebook
+- [x] EDA notebook
 - [ ] Baseline models (RF, SVR, MLP)
 - [ ] Feature-Attention MLP implementation
 - [ ] SHAP integration
