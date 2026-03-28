@@ -40,11 +40,10 @@ class FeatureAttention(nn.Module):
         self.attention = nn.Linear(n_features, n_features, bias=True)
 
     def forward(self, x: torch.Tensor):
-        # x: (batch, n_features)
-        weights = torch.softmax(self.attention(x), dim=-1)   # (batch, n_features)
-        attended = x * weights                                 # element-wise
+        scores = self.attention(x)
+        weights = torch.softmax(scores / 0.1, dim=-1)  # temperature=0.1 softens distribution
+        attended = x * weights
         return attended, weights
-
 
 class FeatureAttentionMLP(nn.Module):
     """

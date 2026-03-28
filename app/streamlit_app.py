@@ -135,22 +135,26 @@ def main():
             )
             st.caption("UPDRS scale: 0 = no impairment, 108 = severe impairment")
 
-            # ── Attention weight bar chart ──
-            st.subheader("Feature Attention Weights")
-            st.markdown("Which features the model focused on for this prediction:")
+            # ── Feature importance via input × attention ──
+            st.subheader("Feature Importance for This Prediction")
+            st.markdown("Contribution of each feature to this prediction (input magnitude × attention):")
 
             feature_names = list(FEATURE_INFO.keys())
-            sorted_idx = np.argsort(attn)[::-1][:10]
+
+            # Use input magnitude × attention weight as proxy importance
+            importance = np.abs(x_scaled[0]) * attn
+            sorted_idx = np.argsort(importance)[::-1][:10]
 
             fig, ax = plt.subplots(figsize=(7, 4))
+            colors = ["#1f77b4" if i == 0 else "#aec7e8" for i in range(10)]
             ax.barh(
-                range(len(sorted_idx)),
-                attn[sorted_idx][::-1],
-                color="#1f77b4", edgecolor="none",
+                range(10),
+                importance[sorted_idx][::-1],
+                color=colors[::-1], edgecolor="none",
             )
-            ax.set_yticks(range(len(sorted_idx)))
+            ax.set_yticks(range(10))
             ax.set_yticklabels([feature_names[i] for i in sorted_idx][::-1], fontsize=10)
-            ax.set_xlabel("Attention Weight")
+            ax.set_xlabel("Feature Contribution (|input| × attention weight)")
             ax.set_title("Top 10 Features Driving This Prediction")
             ax.spines["top"].set_visible(False)
             ax.spines["right"].set_visible(False)
