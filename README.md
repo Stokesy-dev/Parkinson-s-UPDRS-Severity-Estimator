@@ -176,12 +176,11 @@ Draft available in `docs/paper_draft.md` (in progress).
 
 - [x] Repository setup + structure
 - [x] EDA notebook
-- [ ] Baseline models (RF, SVR, MLP)
-- [ ] Feature-Attention MLP implementation
-- [ ] SHAP integration
-- [ ] Streamlit demo
-- [ ] Paper draft
-- [ ] IEEE submission
+- [x] Baseline models (RF, SVR, MLP)
+- [x] Feature-Attention MLP implementation
+- [x] SHAP integration
+- [x] Streamlit demo
+- [x] Paper draft
 
 ---
 
